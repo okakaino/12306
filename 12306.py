@@ -359,8 +359,6 @@ def get_train_list(session, start, end, travel_date):
 
     try:
         r = session.get(url, headers=headers, params=params)
-        print(r.status_code)
-        print(r.text)
         return r.json()['data']['result']
     except:
         print('获取车次失败，1秒之后重试')
@@ -699,10 +697,10 @@ def place_order(session, start_station, end_station, travel_date, train_info, pa
 
     # 进入订单页面
     user_check_result = check_user(session)
-    print(user_check_result)
+    # print(user_check_result)
     
     submit_result = submit_order_request(session, secret, start_station, end_station, travel_date)
-    print(submit_result)
+    # print(submit_result)
 
     repeat_submit_token, train_location, train_no, key_check_isChange, left_ticket_str = get_tokens(session)
 
@@ -712,18 +710,18 @@ def place_order(session, start_station, end_station, travel_date, train_info, pa
 
     # 开始检查订单
     order_info = check_order_info(session, repeat_submit_token, passengers, seat_type)
-    print(order_info)
+    # print(order_info)
 
     queue_count = check_queue_count(session, start_station, end_station, travel_date, train_info, seat_type, train_location, train_no, repeat_submit_token, left_ticket_str)
-    print(queue_count)
+    # print(queue_count)
     # 结束检查订单
 
     # 开始提交订单
     single_queue = confirm_single_for_queue(session, train_location, passengers, seat_type, key_check_isChange, repeat_submit_token, left_ticket_str)
-    print(single_queue)
+    # print(single_queue)
 
     result_order = result_order_for_dc_queue(session, '', repeat_submit_token)
-    print(result_order)
+    # print(result_order)
     # 结束提交订单
     
     try:
