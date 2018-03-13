@@ -355,10 +355,12 @@ def get_train_list(session, start, end, travel_date):
         'purpose_codes': 'ADULT',
     }
 
-    url = 'https://kyfw.12306.cn/otn/leftTicket/queryZ'
+    url = 'https://kyfw.12306.cn/otn/leftTicket/queryO'
 
     try:
         r = session.get(url, headers=headers, params=params)
+        print(r.status_code)
+        print(r.text)
         return r.json()['data']['result']
     except:
         print('获取车次失败，1秒之后重试')
@@ -804,7 +806,7 @@ def search_ticket(session, travel_date=None, passengers=None):
             success, msg = place_order(session, start_station, end_station, travel_date, train_table[row], passengers, seat_type, secret, left_ticket_secret)
     
     if success:
-        print('订单已经生成，请于尽快付款，否则将会被取消')
+        print('订单已经生成，请尽快付款，否则将会被取消')
     else:
         print('订票失败，{}，自动重试'.format(msg))
         return search_ticket(session, travel_date=travel_date)
