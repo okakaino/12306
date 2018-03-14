@@ -11,4 +11,4 @@
 3. python 12306.py
 
 登录效果
-![登录](https://raw.githubusercontent.com/12306/登录.png)
+![登录](https://raw.githubusercontent.com/okakaino/12306/登录.png)
