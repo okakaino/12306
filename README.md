@@ -12,3 +12,6 @@
 
 登录效果
 ![登录](https://raw.githubusercontent.com/okakaino/12306/master/登录.png)
+
+车次列表
+![车次](https://raw.githubusercontent.com/okakaino/12306/master/车次列表.png)
